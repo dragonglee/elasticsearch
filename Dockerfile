@@ -8,7 +8,7 @@ ENV discovery.type=single-node \
     ES_JAVA_OPTS="-Xms1g -Xmx1g" \
     ES_INITIAL_ADMIN_PASSWORD=${ES_INITIAL_ADMIN_PASSWORD}
 
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD curl -fs http://localhost:9200/_cluster/health || exit 1
+HEALTHCHECK --interval=60s --timeout=10s --start-period=60s --retries=5 CMD curl -fs http://localhost:9200/_cluster/health || exit 1
 
 EXPOSE 9200
 VOLUME ["/usr/share/elasticsearch/data"]
